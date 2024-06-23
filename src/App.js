@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GrapesEditor from './components/GrapesEditor';
+import TemplateList from './components/TemplateList';
+import EditTemplate from './components/EditTemplate';
+import PreviewTemplate from './components/PreviewTemplate';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<GrapesEditor />} />
+          <Route path="/templates" element={<TemplateList />} />
+          <Route path="/edit/:id" element={<EditTemplate />} />
+          <Route path="/preview/:id" element={<PreviewTemplate />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

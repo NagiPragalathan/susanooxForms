@@ -1,3 +1,5 @@
+/* src/App.css */
+
 .App {
   text-align: center;
 }
@@ -7,15 +9,9 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,11 +24,23 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#blocks {
+  padding: 10px;
+  width: 250px;
+  border-right: 1px solid #ddd;
+}
+
+.gjs-block-section {
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 5px 0;
+}
+
+.gjs-block-section:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gjs-block-section > b {
+  font-size: 13px;
 }
