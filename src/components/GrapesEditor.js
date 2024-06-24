@@ -1,5 +1,3 @@
-// src/components/GrapesEditor.js
-
 import React, { useEffect, useRef } from 'react';
 import grapesjs from 'grapesjs';
 import 'grapesjs/dist/css/grapes.min.css';
@@ -14,7 +12,7 @@ const GrapesEditor = () => {
       container: editorRef.current,
       fromElement: true,
       height: '100vh',
-      width: 'calc(100% - 250px)', // Adjust width to leave space for the block manager
+      width: 'calc(100% - 250px)',
       storageManager: { autoload: 0 },
       blockManager: {
         appendTo: '#blocks',
@@ -23,10 +21,10 @@ const GrapesEditor = () => {
             id: 'form',
             label: '<b>Form</b>',
             attributes: { class: 'gjs-block-form' },
-            content: `<form class="vertical-form">
+            content: `<form class="vertical-form space-y-4 p-4 bg-gray-50 rounded-md">
                         <div class="form-group">
-                          <label for="input1">Input 1</label>
-                          <input type="text" class="form-control" id="input1" placeholder="Enter something">
+                          <label class="block text-gray-700">Input 1</label>
+                          <input type="text" class="form-control border rounded-md p-2 w-full" id="input1" placeholder="Enter something">
                         </div>
                       </form>`,
           },
@@ -34,13 +32,13 @@ const GrapesEditor = () => {
             id: 'input',
             label: 'Input',
             attributes: { class: 'gjs-block-input' },
-            content: '<div class="form-group"><label>Input</label><input type="text" class="form-control" placeholder="Enter something"></div>',
+            content: '<div class="form-group"><label class="block text-gray-700">Input</label><input type="text" class="form-control border rounded-md p-2 w-full" placeholder="Enter something"></div>',
           },
           {
             id: 'textarea',
             label: 'Textarea',
             attributes: { class: 'gjs-block-textarea' },
-            content: '<div class="form-group"><label>Textarea</label><textarea class="form-control" rows="3" placeholder="Enter something"></textarea></div>',
+            content: '<div class="form-group"><label class="block text-gray-700">Textarea</label><textarea class="form-control border rounded-md p-2 w-full" rows="3" placeholder="Enter something"></textarea></div>',
           },
           {
             id: 'checkbox',
@@ -48,7 +46,7 @@ const GrapesEditor = () => {
             attributes: { class: 'gjs-block-checkbox' },
             content: `<div class="form-group form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
+                        <label class="form-check-label text-gray-700" for="defaultCheck1">
                           Default checkbox
                         </label>
                       </div>`,
@@ -59,7 +57,7 @@ const GrapesEditor = () => {
             attributes: { class: 'gjs-block-radio' },
             content: `<div class="form-group form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                        <label class="form-check-label" for="exampleRadios1">
+                        <label class="form-check-label text-gray-700" for="exampleRadios1">
                           Default radio
                         </label>
                       </div>`,
@@ -68,7 +66,7 @@ const GrapesEditor = () => {
             id: 'select',
             label: 'Select',
             attributes: { class: 'gjs-block-select' },
-            content: `<div class="form-group"><label>Select</label><select class="form-control">
+            content: `<div class="form-group"><label class="block text-gray-700">Select</label><select class="form-control border rounded-md p-2 w-full">
                         <option>Option 1</option>
                         <option>Option 2</option>
                         <option>Option 3</option>
@@ -78,7 +76,7 @@ const GrapesEditor = () => {
             id: 'button',
             label: 'Button',
             attributes: { class: 'gjs-block-button' },
-            content: '<div class="form-group"><button type="button" class="btn btn-primary">Submit</button></div>',
+            content: '<button type="button" class="btn btn-primary bg-blue-500 text-white rounded-md p-2 w-full">Submit</button></div>',
           },
         ],
       },
@@ -117,15 +115,17 @@ const GrapesEditor = () => {
       },
     });
 
+    // Inject Tailwind CSS into the GrapesJS editor iframe
+    const iframe = editor.Canvas.getFrameEl();
+    const head = iframe.contentDocument.head;
+    const script = iframe.contentDocument.createElement('script');
+    script.src = 'https://cdn.tailwindcss.com';
+    head.appendChild(script);
+
     editor.on('load', () => {
       // Add form container on load
       const wrapper = editor.getWrapper();
-      const formContainer = `<form class="vertical-form">
-                                <div class="form-group">
-                                  <label for="input1">Input 1</label>
-                                  <input type="text" class="form-control" id="input1" placeholder="Enter something">
-                                </div>
-                             </form>`;
+      const formContainer = `<div class="bg-red-500">asdfgh</div>`;
       wrapper.append(formContainer);
 
       console.log('Editor loaded successfully');
@@ -162,10 +162,10 @@ const GrapesEditor = () => {
   }, []);
 
   return (
-    <div className="editor-container">
-      <div id="blocks" className="blocks-container"></div>
-      <div ref={editorRef} className="editor-main"></div>
-      <button id="save-button" className="save-button" style={{zIndex:99}}>Save</button>
+    <div className="editor-container flex">
+      <div id="blocks" className="blocks-container w-64 bg-gray-100 border-r overflow-y-auto p-4"></div>
+      <div ref={editorRef} className="editor-main flex-grow p-4 bg-white"></div>
+      <button id="save-button" className="save-button absolute bottom-4 right-4 bg-green-500 text-white rounded-md p-2 z-50">Save</button>
     </div>
   );
 };

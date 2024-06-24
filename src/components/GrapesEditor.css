@@ -11,13 +11,10 @@
   width: 250px;
   border-right: 1px solid #ddd;
   background-color: #f5f5f5;
-  overflow-y: auto;
 }
 
 .editor-main {
   flex-grow: 1;
-  background-color: #fff;
-  padding: 20px;
 }
 
 .save-button {
@@ -36,30 +33,17 @@
   background-color: #218838;
 }
 
-/* Form block styles */
-.gjs-block-form {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
+.gjs-block-section {
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 5px 0;
 }
 
-.gjs-block-input,
-.gjs-block-textarea,
-.gjs-block-checkbox,
-.gjs-block-radio,
-.gjs-block-select,
-.gjs-block-button {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
+.gjs-block-section:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.gjs-block-textarea textarea {
-  width: 100%;
-  resize: none;
-}
-
-.gjs-block-button button {
-  display: block;
-  width: 100%;
+.gjs-block-section > b {
+  font-size: 13px;
 }
