@@ -4,46 +4,58 @@
   display: flex;
   height: 100vh;
   position: relative; /* Ensure relative positioning for absolute child elements */
+  font-family: 'Arial', sans-serif; /* Adding a default font */
 }
 
 .blocks-container {
-  padding: 10px;
+  padding: 20px;
   width: 250px;
   border-right: 1px solid #ddd;
-  background-color: #f5f5f5;
+  background-color: #f8f9fa; /* Lighter background color */
+  overflow-y: auto; /* Ensure scrolling if content overflows */
 }
 
 .editor-main {
   flex-grow: 1;
+  background-color: #ffffff; /* White background for the main editor */
+  padding: 20px; /* Add some padding to the editor */
+  overflow-y: auto; /* Ensure scrolling if content overflows */
 }
 
 .save-button {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #007bff; /* Bootstrap primary color */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .save-button:hover {
-  background-color: #218838;
+  background-color: #0056b3; /* Darker shade on hover */
 }
 
 .gjs-block-section {
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  margin: 5px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Lighter border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* More spacing between blocks */
+  background-color: #ffffff; /* White background for blocks */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .gjs-block-section:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05); /* Slightly darker on hover */
 }
 
 .gjs-block-section > b {
-  font-size: 13px;
+  font-size: 14px; /* Slightly larger font size */
+  color: #333; /* Darker text color */
 }
